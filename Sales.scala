@@ -28,8 +28,7 @@ object Sales extends Configuration with App {
  Quater extraction from period column:
  val quarter = factDF.withColumn("period",col("period").cast(DateType)).withColumn("gross_sale",col("gross_sale").cast(IntegerType)).withColumn("units",col("units").cast(IntegerType)).withColumn("Quater",quarter(to_timestamp($"period","yyyy-MM-dd")))
 
- 
- val Qtr = df.withColumn("QTR",quarter($"period"))
+ s val Qtr = df.withColumn("QTR",quarter($"period"))
  
  // Now, directly find the quarter sales:
  val q2019 = Qtr.select(col("gross_sale")).where(col("QTR")===1)
