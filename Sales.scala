@@ -15,10 +15,7 @@ object Sales extends Configuration with App {
   val header = factData.first
   val rows = factData.filter(l=>l!=header)
   val factDF = rows.toDF("sales_fact_id","sales_fact_key","period","gross_sale","units")
-  
-  val df = factDF.withColumn("period",col("period").cast(DateType)).withColumn("gross_sale",col("gross_sale").cast(IntegerType)).withColumn("units",col("units").cast(IntegerType))
-  
- 
+    
   // Extracting Year 
   val yr  = factDF.withColumn("period",col("period").cast(DateType)).withColumn("gross_sale",col("gross_sale").cast(IntegerType)).withColumn("units",col("units").cast(IntegerType)).withColumn("YEAR",year(to_timestamp($"period","yyyy-MM-dd")))
   
