@@ -22,7 +22,7 @@ object Sales extends Configuration with App {
   // Extracting Year 
   val yr  = factDF.withColumn("period",col("period").cast(DateType)).withColumn("gross_sale",col("gross_sale").cast(IntegerType)).withColumn("units",col("units").cast(IntegerType)).withColumn("YEAR",year(to_timestamp($"period","yyyy-MM-dd")))
   
- // For the year 2019:
+ // For the year 2019: 
  val y = yr.select(col("gross_sale")).where(col("YEAR")===2019)
  
  // For the year 2018: 
