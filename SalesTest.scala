@@ -1,13 +1,13 @@
 package com.epam.salestest
 
 import org.scalatest.FunSuite
+import org.scalatest.exceptions.TestFailedException
 import scala.io.Source
 
 
 class SalesTest extends FunSuite {
 
-	val spark = SparkSession.builder().master("yarn").appName("salesInfo")
-		.config("spark.sql.warehouse.dir","/apps/hive/warehouse").config("hive.metastore.uris","thrift://rm01.itversity.com:9083").enableHiveSupport().getOrCreate()
+	val spark = SparkSession.builder().master("yarn").appName("salesInfo").getOrCreate()
  
     	
 	test("mocking file contents"){
